@@ -1,11 +1,21 @@
-FROM node:18-alpine AS build
+# frontend/Dockerfile
+
+# 1) build stage
+FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-COPY src ./src
-COPY public ./public
-RUN npm install && npm run build
+RUN npm ci
+COPY . .
+RUN npm run build
 
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# 2) serve stage
+FROM node:18-alpine
+RUN npm install -g serve
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+
+# expose a non-privileged port
+EXPOSE 8080
+
+# start the static server
+CMD ["serve", "-s", "dist", "-l", "8080"]

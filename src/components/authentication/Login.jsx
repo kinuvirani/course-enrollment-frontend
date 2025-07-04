@@ -5,7 +5,6 @@ import {studentLogin} from '../../store/slices/authSlice.js'
 import {useDispatch} from "react-redux"
 import {useMessageContext} from "../../contexts/MessageProvider.jsx";
 import {useNavigate} from "react-router-dom";
-
 const Login = () => {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
@@ -70,5 +69,6 @@ const Login = () => {
         </div>
     )
 }
+
 
 export default Login;
