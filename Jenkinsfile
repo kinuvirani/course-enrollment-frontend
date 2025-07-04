@@ -56,7 +56,7 @@ pipeline {
                         --prod \
                         --auth=$NETLIFY_AUTH_TOKEN \
                         --site=$NETLIFY_SITE_ID \
-                        --build false
+                        --no-build
                 '''
             }
         }
