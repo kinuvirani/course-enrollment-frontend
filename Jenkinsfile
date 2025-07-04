@@ -39,7 +39,7 @@ pipeline {
                     echo "Deploying to production. Site ID: " $NETLIFY_AUTH_TOKEN
                     node_modules/.bin/netlify status
                     node_modules/.bin/netlify deploy --dir=dist --prod
-                ''''
+                '''
             }
         }
     }
