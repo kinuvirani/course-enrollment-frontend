@@ -27,7 +27,7 @@ const AppHeader = () => {
             getItem('Logout', 'logout', <LogoutOutlined />)
         ]),
     ] : [
-        getItem('Registration --', 'registration', <UserOutlined />),
+        getItem('Registration', 'registration', <UserOutlined />),
         getItem('Login', 'login', <TeamOutlined />)
     ];
 
